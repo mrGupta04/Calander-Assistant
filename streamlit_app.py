@@ -9,13 +9,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configuration
-BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+BACKEND_URL = os.getenv("BACKEND_URL", "https://calander-assistant.onrender.com")
 API_KEY = os.getenv("API_KEY")
 TIMEZONE = os.getenv("TZ", "UTC")
 
 st.set_page_config(
-    page_title="🗓️ Calendar Assistant",
-    page_icon="🗓️",
+    page_title=" Calendar Assistant",
+    page_icon="",
     layout="wide"
 )
 
@@ -40,7 +40,7 @@ st.markdown("""
 if "messages" not in st.session_state:
     st.session_state.messages = [{
         "role": "assistant",
-        "content": "👋 Hi! I'm your calendar assistant. How can I help you today?"
+        "content": " Hi! I'm your calendar assistant. How can I help you today?"
     }]
 
 # Display chat
@@ -52,10 +52,10 @@ for msg in st.session_state.messages:
 with st.sidebar:
     st.title("Calendar Options")
     
-    if st.button("🔄 New Conversation"):
+    if st.button(" New Conversation"):
         st.session_state.messages = [{
             "role": "assistant", 
-            "content": "👋 Hi! I'm your calendar assistant. How can I help you today?"
+            "content": " Hi! I'm your calendar assistant. How can I help you today?"
         }]
         st.rerun()
     
@@ -120,7 +120,7 @@ if prompt := st.chat_input("How can I help with your calendar?"):
                     slot_time = parser.parse(slot).astimezone(pytz.timezone(TIMEZONE))
                     with cols[i % 2]:
                         if st.button(
-                            f"🗓️ {slot_time.strftime('%I:%M %p')}",
+                            f" {slot_time.strftime('%I:%M %p')}",
                             key=f"slot_{i}",
                             use_container_width=True
                         ):
